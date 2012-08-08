@@ -1,6 +1,7 @@
 -module(belt).
 -export([say/0,add_one/1,fib/1,fac/1]).
 
+% Message receiver
 say() ->
   receive
     {place, Name} ->
@@ -8,6 +9,7 @@ say() ->
       say()
   end.
 
+% Add one to each element on a list
 add_one([]) -> [];
 add_one([H|T]) -> [H+1|add_one(T)].
 
