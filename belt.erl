@@ -1,5 +1,5 @@
 -module(belt).
--export([say/0,add_one/1,fib/1,fac/1]).
+-export([say/0,add_one/1,fib/1,fac/1,sum/1, len/1, avg/1]).
 
 % Message receiver
 say() ->
@@ -21,3 +21,15 @@ fib(N) -> fib(N-2) + fib(N-1).
 % Factorial
 fac(1) -> 1;
 fac(N) -> N * fac(N-1).
+
+% Average of a list
+avg([]) -> 0;
+avg(L) -> sum(L) div len(L).
+
+% Sum of elements on a list
+sum([]) -> 0;
+sum([H|T]) -> H + sum(T).
+
+% Slow implementation of BIF length
+len([]) -> 0;
+len([_|T]) -> 1 + len(T).
