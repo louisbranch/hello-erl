@@ -1,5 +1,5 @@
 -module(belt).
--export([say/0,add_one/1,fib/1,fac/1,sum/1, len/1, avg/1]).
+-export([say/0,add_one/1,fib/1,fac/1,sum/1, len/1, avg/1, even/1]).
 
 % Message receiver
 say() ->
@@ -33,3 +33,8 @@ sum([H|T]) -> H + sum(T).
 % Slow implementation of BIF length
 len([]) -> 0;
 len([_|T]) -> 1 + len(T).
+
+% Select even numbers
+even([]) -> [];
+even([H|T]) when H rem 2 == 0 -> [H|even(T)];
+even([_|T]) -> even(T).
